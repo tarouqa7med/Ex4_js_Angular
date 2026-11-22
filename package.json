@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:project_name": "node dist/project_name/server/server.mjs"
+    "serve:ssr:Ex4_js_Angular": "node dist/Ex4_js_Angular/server/server.mjs"
   },
   "private": true,
   "packageManager": "npm@12.2.2",

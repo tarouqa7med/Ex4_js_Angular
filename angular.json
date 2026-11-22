@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "project_name": {
+    "Ex4_js_Angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -71,10 +71,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "project_name:build:production"
+              "buildTarget": "Ex4_js_Angular:build:production"
             },
             "development": {
-              "buildTarget": "project_name:build:development"
+              "buildTarget": "Ex4_js_Angular:build:development"
             }
           },
           "defaultConfiguration": "development"
