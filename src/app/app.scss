@@ -1,5 +1,5 @@
 
-section {
+.myPictures {
         .container {
                 .row {
                         width: 90%;
@@ -34,6 +34,99 @@ section {
                                                 }
                                         }
                                 }
+                        }
+                }
+        }
+}
+.popup {
+        left: 0;
+        height: 100vh;
+        display: none;
+        opacity: 0;
+        transition-duration: 500ms;
+        &.active {
+                display: flex;
+        }
+        &.show {
+                opacity: 1;
+        }
+        
+        .container {
+                width: 450px;
+                height: 450px;
+                background-color: red;
+                position: relative;
+
+                i {
+                        position: absolute;
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 50%;
+                        background-color: #262673;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: white;
+                        font-size: 12px;
+                        transition-duration: 200ms;
+                        cursor: pointer;
+
+                        &:hover {
+                                background-color: #5050b8;
+                        }
+                        &:active {
+                                background-color: white;
+                                color: black;
+                        }
+                }
+                .close {
+                        top: 15px;
+                        right: 15px;
+                }
+                .next, .prev {
+                        top: 50%;
+                        transform: translateY(-50%);
+                }
+                .next {
+                        right: 10px;
+                }
+                .prev {
+                        left: 10px;
+                }
+                ul {
+                        position: absolute;
+                        bottom: 0;
+                        li {
+                                width: 25px;
+                                height: 25px;
+                                border-radius: 50%;
+                                background-color: #262673;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                color: white;
+                                font-size: 12px;
+                                cursor: pointer;
+                                transition-duration: 200ms;
+
+                                &:hover {
+                                        background-color: #5050b8;
+                                }
+                                &:active {
+                                        background-color: white;
+                                        color: black;
+                                }
+                                &.active {
+                                        background-color: aqua;
+                                        color: black;
+                                        font-weight: bold;
+                                }
+                        }
+                }
+                @media screen and (max-width: 576px) {
+                        & {
+                                width: 80%;
+                                height: auto;
                         }
                 }
         }

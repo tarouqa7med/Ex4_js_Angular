@@ -1,78 +1,31 @@
-<section class="p-5">
+<section class="myPictures p-5" id="myPictures">
         <div class="container">
                 <div class="row row-gap-5 m-auto">
-                        <div class="col-lg-4"data-index="1">
-                                <div class="item m-auto rounded-3 overflow-hidden">
-                                        <img class="img-fluid" src="./images/1.jpg" alt="">
-                                        <div class="frame w-100 h-100 d-flex justify-content-center align-items-center bg-black bg-opacity-50">
-                                                <i class="fa-regular fa-plus-square openPopup text-white fs-4"></i>
+                        <ng-container *ngFor="let img of images; index as id">
+                                <div class="col-lg-4" [attr.data-index]="id+1">
+                                        <div class="item m-auto rounded-3 overflow-hidden">
+                                                <img class="img-fluid" src="./images/{{img}}" alt="">
+                                                <div class="frame w-100 h-100 d-flex justify-content-center align-items-center bg-black bg-opacity-50">
+                                                        <i class="fa-regular fa-plus-square openPopup text-white fs-4" (click)="openPopup()"></i>
+                                                </div>
                                         </div>
                                 </div>
-                        </div>
-                        <div class="col-lg-4"data-index="2">
-                                <div class="item m-auto rounded-3 overflow-hidden">
-                                        <img class="img-fluid" src="./images/2.jpg" alt="">
-                                        <div class="frame w-100 h-100 d-flex justify-content-center align-items-center bg-black bg-opacity-50">
-                                                <i class="fa-regular fa-plus-square openPopup text-white fs-4"></i>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="col-lg-4"data-index="3">
-                                <div class="item m-auto rounded-3 overflow-hidden">
-                                        <img class="img-fluid" src="./images/3.jpg" alt="">
-                                        <div class="frame w-100 h-100 d-flex justify-content-center align-items-center bg-black bg-opacity-50">
-                                                <i class="fa-regular fa-plus-square openPopup text-white fs-4"></i>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="col-lg-4"data-index="4">
-                                <div class="item m-auto rounded-3 overflow-hidden">
-                                        <img class="img-fluid" src="./images/4.jpg" alt="">
-                                        <div class="frame w-100 h-100 d-flex justify-content-center align-items-center bg-black bg-opacity-50">
-                                                <i class="fa-regular fa-plus-square openPopup text-white fs-4"></i>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="col-lg-4"data-index="5">
-                                <div class="item m-auto rounded-3 overflow-hidden">
-                                        <img class="img-fluid" src="./images/5.jpg" alt="">
-                                        <div class="frame w-100 h-100 d-flex justify-content-center align-items-center bg-black bg-opacity-50">
-                                                <i class="fa-regular fa-plus-square openPopup text-white fs-4"></i>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="col-lg-4"data-index="6">
-                                <div class="item m-auto rounded-3 overflow-hidden">
-                                        <img class="img-fluid" src="./images/6.jpg" alt="">
-                                        <div class="frame w-100 h-100 d-flex justify-content-center align-items-center bg-black bg-opacity-50">
-                                                <i class="fa-regular fa-plus-square openPopup text-white fs-4"></i>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="col-lg-4"data-index="7">
-                                <div class="item m-auto rounded-3 overflow-hidden">
-                                        <img class="img-fluid" src="./images/7.jpg" alt="">
-                                        <div class="frame w-100 h-100 d-flex justify-content-center align-items-center bg-black bg-opacity-50">
-                                                <i class="fa-regular fa-plus-square openPopup text-white fs-4"></i>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="col-lg-4"data-index="8">
-                                <div class="item m-auto rounded-3 overflow-hidden">
-                                        <img class="img-fluid" src="./images/8.jpg" alt="">
-                                        <div class="frame w-100 h-100 d-flex justify-content-center align-items-center bg-black bg-opacity-50">
-                                                <i class="fa-regular fa-plus-square openPopup text-white fs-4"></i>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="col-lg-4"data-index="9">
-                                <div class="item m-auto rounded-3 overflow-hidden">
-                                        <img class="img-fluid" src="./images/9.jpg" alt="">
-                                        <div class="frame w-100 h-100 d-flex justify-content-center align-items-center bg-black bg-opacity-50">
-                                                <i class="fa-regular fa-plus-square openPopup text-white fs-4"></i>
-                                        </div>
-                                </div>
-                        </div>
+                        </ng-container>
                 </div>
+        </div>
+</section>
+
+<section class="popup position-fixed top-0 w-100 justify-content-center align-items-center z-2 bg-black bg-opacity-50" id="popup" (click)="closePopup()">
+        <div class="container p-0 rounded-3 overflow-hidden" (click)="ignore()">
+                <img class="img-fluid m-0 m-auto" src="images/1.jpg" alt="">
+                <i class="fa-solid fa-close close" (click)="closePopup()"></i>
+                <i class="fa-solid fa-chevron-right next"></i>
+                <i class="fa-solid fa-chevron-left prev"></i>
+                <ul
+                        class="list-unstyled w-100 d-flex justify-content-center align-items-center column-gap-2 column-gap-lg-3">
+                        <ng-container *ngFor="let img of images; index as i">
+                                <li>{{i+1}}</li>
+                        </ng-container>
+                </ul>
         </div>
 </section>
