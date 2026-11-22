@@ -1,0 +1,40 @@
+
+section {
+        .container {
+                .row {
+                        width: 90%;
+                        .col-lg-4 {
+                                .item {
+                                        img {
+                                                transition-duration: 350ms;
+                                        }
+                                        width: 90%;
+                                        position: relative;
+                                        .frame {
+                                                position: absolute;
+                                                top: 0;
+                                                left: 0;
+                                                opacity: 0;
+                                                transition-duration: 350ms;
+                                                i {
+                                                        cursor: pointer;
+                                                        transition-duration: 350ms;
+                                                        &:hover {
+                                                                color: yellow !important;
+                                                                transform: rotate(180deg);
+                                                        }
+                                                }
+                                        }
+                                        &:hover {
+                                                img {
+                                                        scale: 1.2;
+                                                }
+                                                .frame {
+                                                        opacity: 1;
+                                                }
+                                        }
+                                }
+                        }
+                }
+        }
+}
