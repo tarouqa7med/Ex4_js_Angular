@@ -2,11 +2,11 @@
         <div class="container">
                 <div class="row row-gap-5 m-auto">
                         <ng-container *ngFor="let img of images; index as id">
-                                <div class="col-lg-4" [attr.data-index]="id+1">
+                                <div class="col-lg-4">
                                         <div class="item m-auto rounded-3 overflow-hidden">
-                                                <img class="img-fluid" src="./images/{{img}}" alt="">
+                                                <img class="img-fluid" src="./images/{{img}}" [attr.data-index]="id" alt="" #image>
                                                 <div class="frame w-100 h-100 d-flex justify-content-center align-items-center bg-black bg-opacity-50">
-                                                        <i class="fa-regular fa-plus-square openPopup text-white fs-4" (click)="openPopup()"></i>
+                                                        <i class="fa-regular fa-plus-square openPopup text-white fs-4" (click)="openPopup(popup_html, image, popupImage, id+1)"></i>
                                                 </div>
                                         </div>
                                 </div>
@@ -15,12 +15,12 @@
         </div>
 </section>
 
-<section class="popup position-fixed top-0 w-100 justify-content-center align-items-center z-2 bg-black bg-opacity-50" id="popup" (click)="closePopup()">
-        <div class="container p-0 rounded-3 overflow-hidden" (click)="ignore()">
-                <img class="img-fluid m-0 m-auto" src="images/1.jpg" alt="">
+<section class="popup position-fixed top-0 w-100 justify-content-center align-items-center z-2 bg-black bg-opacity-50" #popup_html (click)="closePopup()">
+        <div class="container p-0 rounded-3 overflow-hidden" (click)="stopPropagation($event)">
+                <img class="img-fluid m-0 m-auto" src="images/1.jpg" alt="" #popupImage>
                 <i class="fa-solid fa-close close" (click)="closePopup()"></i>
-                <i class="fa-solid fa-chevron-right next"></i>
-                <i class="fa-solid fa-chevron-left prev"></i>
+                <i class="fa-solid fa-chevron-right next" (click)="nextImage(imageEle, popupImage)"></i>
+                <i class="fa-solid fa-chevron-left prev" (click)="prevImage(imageEle, popupImage)"></i>
                 <ul
                         class="list-unstyled w-100 d-flex justify-content-center align-items-center column-gap-2 column-gap-lg-3">
                         <ng-container *ngFor="let img of images; index as i">

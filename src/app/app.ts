@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HtmlTagDefinition } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { console } from 'inspector';
 
 @Component({
   imports: [CommonModule],
@@ -22,12 +21,20 @@ export class App {
     "9.jpg"
   ]
   isPopupActive: boolean = false;
+  popup!: HTMLElement;
+  imageEle!: HTMLImageElement;
+  globalIndex: number = 0;
 
-  openPopup() {
-    this.isPopupActive = !this.isPopupActive;
-    document.querySelector(".popup")?.classList.add("active");
+  openPopup(popup_html: HTMLElement, image: HTMLImageElement, popupImage: HTMLImageElement, id: number) {
+    this.popup = popup_html;
+    this.imageEle = image;
+    this.globalIndex = id;
+    this.globalIndex = Number(image.getAttribute("data-index"));
+    // this.updateImg(image, popupImage);
+    popupImage.src = this.imageEle.src;
+    popup_html?.classList.add("active");
     setTimeout(() => {
-      document.querySelector(".popup")?.classList.add("show");
+      popup_html?.classList.add("show");
     }, 1);
   }
   closePopup() {
@@ -35,8 +42,32 @@ export class App {
     setTimeout(() => {
       document.querySelector(".popup")?.classList.remove("active");
     }, 501);
+    this.globalIndex = 0;
   }
-  ignore() {
-    
+  stopPropagation(e: Event) {
+    e.stopPropagation();
+  }
+  // updateImg(image: HTMLImageElement, popupImage: HTMLImageElement) {
+  //   popupImage.src = image.src;
+  // }
+
+  nextImage(image: HTMLImageElement, popupImage: HTMLImageElement) {
+    let newSrc: string;
+    if (this.globalIndex >= this.images.length - 1) {
+      this.globalIndex = 0;
+      popupImage.src = `images/${this.images[this.globalIndex]}`;
+      return;
+    }
+    newSrc= `images/${this.images[++this.globalIndex]}`
+    popupImage.src = newSrc;
+
+  }
+  prevImage(image: HTMLImageElement, popupImage: HTMLImageElement) {
+    if (this.globalIndex <= 0) {
+      this.globalIndex = this.images.length;
+    }
+    let newSrc: string = `images/${this.images[this.globalIndex - 1]}`
+    this.globalIndex--;
+    popupImage.src = newSrc;
   }
 }
