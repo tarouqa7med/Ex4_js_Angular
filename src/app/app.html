@@ -30,7 +30,7 @@
                 <ul
                         class="list-unstyled w-100 d-flex justify-content-center align-items-center column-gap-2 column-gap-lg-3">
                         <ng-container *ngFor="let img of images; index as i">
-                                <li class="{{globalIndex == i ? 'btn active' : ''}}"><span class="position-relative z-1">{{i+1}}</span></li>
+                                <li class="{{globalIndex == i ? 'btn active' : ''}}" (click)="changeImage(i, popupImage)"><span class="position-relative z-1">{{i+1}}</span></li>
                         </ng-container>
                 </ul>
         </div>

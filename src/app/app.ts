@@ -70,4 +70,9 @@ export class App {
     this.globalIndex--;
     popupImage.src = newSrc;
   }
+  changeImage(index: number, image: HTMLImageElement) {
+    this.globalIndex = index;
+    let newSrc: string = `/images/${this.images[this.globalIndex]}`;
+    image.src = newSrc;
+  }
 }
