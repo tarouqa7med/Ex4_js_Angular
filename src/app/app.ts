@@ -72,7 +72,7 @@ export class App {
   }
   changeImage(index: number, image: HTMLImageElement) {
     this.globalIndex = index;
-    let newSrc: string = `/images/${this.images[this.globalIndex]}`;
+    let newSrc: string = `images/${this.images[this.globalIndex]}`;
     image.src = newSrc;
   }
 }
