@@ -41,8 +41,8 @@ export class App {
     document.querySelector(".popup")?.classList.remove("show");
     setTimeout(() => {
       document.querySelector(".popup")?.classList.remove("active");
+      this.globalIndex = 0;
     }, 501);
-    this.globalIndex = 0;
   }
   stopPropagation(e: Event) {
     e.stopPropagation();

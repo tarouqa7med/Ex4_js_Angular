@@ -18,13 +18,19 @@
 <section class="popup position-fixed top-0 w-100 justify-content-center align-items-center z-2 bg-black bg-opacity-50" #popup_html (click)="closePopup()">
         <div class="container p-0 rounded-3 overflow-hidden" (click)="stopPropagation($event)">
                 <img class="img-fluid m-0 m-auto" src="images/1.jpg" alt="" #popupImage>
-                <i class="fa-solid fa-close close" (click)="closePopup()"></i>
-                <i class="fa-solid fa-chevron-right next" (click)="nextImage(imageEle, popupImage)"></i>
-                <i class="fa-solid fa-chevron-left prev" (click)="prevImage(imageEle, popupImage)"></i>
+                <button class="btn d-flex justify-content-center align-items-center close" (document:keydown.escape)="closePopup()">
+                        <i class="fa-solid fa-close d-flex justify-content-center align-items-center" (click)="closePopup()"></i>
+                </button>
+                <button class="btn d-flex justify-content-center align-items-center next" (document:keydown.arrowright)="nextImage(imageEle, popupImage)">
+                        <i class="fa-solid fa-chevron-right d-flex justify-content-center align-items-center" (click)="nextImage(imageEle, popupImage)"></i>
+                </button>
+                <button class="btn d-flex justify-content-center align-items-center prev" (document:keydown.arrowleft)="prevImage(imageEle, popupImage)">
+                        <i class="fa-solid fa-chevron-left d-flex justify-content-center align-items-center" (click)="prevImage(imageEle, popupImage)"></i>
+                </button>
                 <ul
                         class="list-unstyled w-100 d-flex justify-content-center align-items-center column-gap-2 column-gap-lg-3">
                         <ng-container *ngFor="let img of images; index as i">
-                                <li>{{i+1}}</li>
+                                <li class="{{globalIndex == i ? 'btn active' : ''}}"><span class="position-relative z-1">{{i+1}}</span></li>
                         </ng-container>
                 </ul>
         </div>
